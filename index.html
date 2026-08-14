@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Immersive Analytics</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- AR.js -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!-- Project JavaScript -->
+    <script src="script.js"></script>
+
+</head>
+
+
+<body style="margin: 0; overflow: hidden;">
+
+    <!-- Information panel -->
+    <div id="info"
+         style="
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: Arial;
+         ">
+
+        <div id="location">
+            Getting your location...
+        </div>
+
+        <a id="mapLink"
+           href="#"
+           target="_blank"
+           style="display:none;">
+            View my location on Google Maps
+        </a>
+
+    </div>
+
+
+    <!-- Hotel information -->
+    <div id="hotelList"
+         style="
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 9999;
+            max-height: 30vh;
+            overflow-y: auto;
+            font-family: Arial;
+         ">
+    </div>
+
+
+    <!-- AR SCENE -->
+
+    <a-scene
+        embedded
+        vr-mode-ui="enabled: false"
+        renderer="logarithmicDepthBuffer: true"
+        arjs="sourceType: webcam;">
+
+        <!-- GPS camera -->
+        <a-camera
+            gps-new-camera
+            rotation-reader>
+        </a-camera>
+
+        <!-- Hotel AR objects will be added here -->
+        <a-entity id="hotelChart"></a-entity>
+
+    </a-scene>
+
+
+    <!-- Start location detection -->
+    <script>
+
+        window.addEventListener("load", function () {
+
+            getLocation();
+
+        });
+
+    </script>
+
+</body>
+
+</html>

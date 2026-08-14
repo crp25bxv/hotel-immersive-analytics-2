@@ -1,0 +1,58 @@
+[
+  {
+    "name": "St George's Hotel",
+    "latitude": 53.3244,
+    "longitude": -3.8272,
+    "rating": 4.6,
+    "price": 145,
+    "reviews": 1500
+  },
+  {
+    "name": "Imperial Hotel",
+    "latitude": 53.3239,
+    "longitude": -3.8268,
+    "rating": 4.5,
+    "price": 155,
+    "reviews": 1200
+  },
+  {
+    "name": "Belmont Llandudno",
+    "latitude": 53.3248,
+    "longitude": -3.8277,
+    "rating": 4.7,
+    "price": 140,
+    "reviews": 980
+  },
+  {
+    "name": "The Grand Hotel",
+    "latitude": 53.3246,
+    "longitude": -3.8280,
+    "rating": 4.9,
+    "price": 165,
+    "reviews": 860
+  },
+  {
+    "name": "Dunoon Hotel",
+    "latitude": 53.3240,
+    "longitude": -3.8288,
+    "rating": 4.4,
+    "price": 120,
+    "reviews": 730
+  },
+  {
+    "name": "The Winchmore Hotel",
+    "latitude": 53.3198,
+    "longitude": -3.8270,
+    "rating": 4.3,
+    "price": 110,
+    "reviews": 690
+  },
+  {
+    "name": "The Marlborough Hotel",
+    "latitude": 53.3221,
+    "longitude": -3.8294,
+    "rating": 4.4,
+    "price": 105,
+    "reviews": 540
+  }
+]
