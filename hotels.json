@@ -1,38 +1,26 @@
-function create3DChart(hotels) {
-
-    const scene = document.querySelector("a-scene");
-
-    hotels.forEach(hotel => {
-
-        // ⭐ DEMO MODE: place hotels near your current location
-        const demoLat = currentUserLat + (Math.random() * 0.0003);
-        const demoLng = currentUserLng + (Math.random() * 0.0003);
-
-        const entity = document.createElement("a-entity");
-        entity.setAttribute("gps-entity-place",
-            `latitude: ${demoLat}; longitude: ${demoLng};`
-        );
-
-        // 3D bar height based on price
-        const height = hotel.price / 10;
-
-        const bar = document.createElement("a-box");
-        bar.setAttribute("color", "blue");
-        bar.setAttribute("opacity", "0.8");
-        bar.setAttribute("width", "2");
-        bar.setAttribute("depth", "2");
-        bar.setAttribute("height", height);
-        bar.setAttribute("position", `0 ${height / 2} 0`);
-
-        const label = document.createElement("a-text");
-        label.setAttribute("value", `${hotel.name} (£${hotel.price})`);
-        label.setAttribute("color", "yellow");
-        label.setAttribute("align", "center");
-        label.setAttribute("position", `0 ${height + 1} 0`);
-        label.setAttribute("width", "10");
-
-        entity.appendChild(bar);
-        entity.appendChild(label);
-        scene.appendChild(entity);
-    });
-}
+[
+  {
+    "name": "Hotel One",
+    "latitude": 53.4808,
+    "longitude": -2.2426,
+    "rating": 4.9,
+    "price": 120,
+    "reviews": 850
+  },
+  {
+    "name": "Hotel Two",
+    "latitude": 53.4815,
+    "longitude": -2.2418,
+    "rating": 4.3,
+    "price": 95,
+    "reviews": 620
+  },
+  {
+    "name": "Hotel Three",
+    "latitude": 53.4799,
+    "longitude": -2.2435,
+    "rating": 3.8,
+    "price": 75,
+    "reviews": 410
+  }
+]
