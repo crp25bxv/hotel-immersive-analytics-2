@@ -1,84 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hotel Immersive Analytics</title>
 
+    <link rel="stylesheet" href="style.css">
+
     <!-- A-Frame -->
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-
-    <!-- AR.js (Stable GPS Version) -->
-    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar.js"></script>
-
-    <!-- Project JavaScript -->
-    <script src="script.js"></script>
-
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
 
-    <!-- Information panel -->
-    <div id="info"
-         style="
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 9999;
-            background: rgba(255,255,255,0.9);
-            padding: 10px;
-            border-radius: 8px;
-            font-family: Arial;
-         ">
+    <header>
+        <h1>Hotel Immersive Analytics</h1>
+        <p>Location-Based 3D Hotel Visualisation</p>
+    </header>
 
-        <div id="location">Getting your location...</div>
+    <main>
 
-        <a id="mapLink"
-           href="#"
-           target="_blank"
-           style="display:none;">
-            View my location on Google Maps
-        </a>
+        <!-- Location Section -->
+        <section class="location-section">
 
-    </div>
+            <button id="locationBtn">
+                📍 Get My Location
+            </button>
 
-    <!-- Hotel information -->
-    <div id="hotelList"
-         style="
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            z-index: 9999;
-            max-height: 30vh;
-            overflow-y: auto;
-            font-family: Arial;
-         ">
-    </div>
+            <div id="locationInfo">
+                <p>Latitude: <span id="latitude">Not detected</span></p>
+                <p>Longitude: <span id="longitude">Not detected</span></p>
+            </div>
 
-    <!-- AR SCENE -->
-    <a-scene
-        embedded
-        vr-mode-ui="enabled: false"
-        renderer="logarithmicDepthBuffer: true"
-        arjs="sourceType: webcam; debugUIEnabled: false;">
+        </section>
 
-        <!-- GPS camera -->
-        <a-camera gps-new-camera rotation-reader></a-camera>
 
-        <!-- Hotel AR objects will be added here -->
-        <a-entity id="hotelChart"></a-entity>
+        <!-- Hotel Information -->
+        <section>
 
-    </a-scene>
+            <h2>Nearby Hotels</h2>
 
-    <!-- Start location detection -->
-    <script>
-        window.addEventListener("load", function () {
-            getLocation();
-        });
-    </script>
+            <div id="hotelList"></div>
+
+        </section>
+
+
+        <!-- 3D Visualisation -->
+        <section class="visualisation-section">
+
+            <h2>3D Hotel Rating Visualisation</h2>
+
+            <div class="scene-container">
+
+                <a-scene embedded
+                         background="color: #ECECEC"
+                         renderer="antialias: true">
+
+                    <a-entity position="0 1.6 8">
+
+                        <a-camera></a-camera>
+
+                    </a-entity>
+
+                    <!-- Lights -->
+                    <a-light type="ambient" intensity="0.8"></a-light>
+
+                    <a-light type="directional"
+                             position="2 4 5"
+                             intensity="1"></a-light>
+
+                    <!-- Bars will be added here -->
+                    <a-entity id="barContainer"
+                              position="0 0 -5">
+                    </a-entity>
+
+                    <!-- Ground -->
+                    <a-plane rotation="-90 0 0"
+                             width="30"
+                             height="30"
+                             color="#D8E2DC">
+                    </a-plane>
+
+                </a-scene>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
 
 </body>
 
