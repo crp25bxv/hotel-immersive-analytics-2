@@ -1,58 +1,38 @@
-[
-  {
-    "name": "St George's Hotel",
-    "latitude": 53.3244,
-    "longitude": -3.8272,
-    "rating": 4.6,
-    "price": 145,
-    "reviews": 1500
-  },
-  {
-    "name": "Imperial Hotel",
-    "latitude": 53.3239,
-    "longitude": -3.8268,
-    "rating": 4.5,
-    "price": 155,
-    "reviews": 1200
-  },
-  {
-    "name": "Belmont Llandudno",
-    "latitude": 53.3248,
-    "longitude": -3.8277,
-    "rating": 4.7,
-    "price": 140,
-    "reviews": 980
-  },
-  {
-    "name": "The Grand Hotel",
-    "latitude": 53.3246,
-    "longitude": -3.8280,
-    "rating": 4.9,
-    "price": 165,
-    "reviews": 860
-  },
-  {
-    "name": "Dunoon Hotel",
-    "latitude": 53.3240,
-    "longitude": -3.8288,
-    "rating": 4.4,
-    "price": 120,
-    "reviews": 730
-  },
-  {
-    "name": "The Winchmore Hotel",
-    "latitude": 53.3198,
-    "longitude": -3.8270,
-    "rating": 4.3,
-    "price": 110,
-    "reviews": 690
-  },
-  {
-    "name": "The Marlborough Hotel",
-    "latitude": 53.3221,
-    "longitude": -3.8294,
-    "rating": 4.4,
-    "price": 105,
-    "reviews": 540
-  }
-]
+function create3DChart(hotels) {
+
+    const scene = document.querySelector("a-scene");
+
+    hotels.forEach(hotel => {
+
+        // ⭐ DEMO MODE: place hotels near your current location
+        const demoLat = currentUserLat + (Math.random() * 0.0003);
+        const demoLng = currentUserLng + (Math.random() * 0.0003);
+
+        const entity = document.createElement("a-entity");
+        entity.setAttribute("gps-entity-place",
+            `latitude: ${demoLat}; longitude: ${demoLng};`
+        );
+
+        // 3D bar height based on price
+        const height = hotel.price / 10;
+
+        const bar = document.createElement("a-box");
+        bar.setAttribute("color", "blue");
+        bar.setAttribute("opacity", "0.8");
+        bar.setAttribute("width", "2");
+        bar.setAttribute("depth", "2");
+        bar.setAttribute("height", height);
+        bar.setAttribute("position", `0 ${height / 2} 0`);
+
+        const label = document.createElement("a-text");
+        label.setAttribute("value", `${hotel.name} (£${hotel.price})`);
+        label.setAttribute("color", "yellow");
+        label.setAttribute("align", "center");
+        label.setAttribute("position", `0 ${height + 1} 0`);
+        label.setAttribute("width", "10");
+
+        entity.appendChild(bar);
+        entity.appendChild(label);
+        scene.appendChild(entity);
+    });
+}
