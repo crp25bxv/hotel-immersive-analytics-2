@@ -1,37 +1,96 @@
-function create3DChart(hotels) {
+* {
+    box-sizing: border-box;
+}
 
-    const chart = document.getElementById("hotelChart");
-    chart.innerHTML = "";
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
 
-    hotels.forEach((hotel) => {
+header {
+    text-align: center;
+    padding: 25px;
+    background: #1f2937;
+    color: white;
+}
 
-        const hotelEntity = document.createElement("a-entity");
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
 
-        hotelEntity.setAttribute(
-            "gps-entity-place",
-            `latitude: ${hotel.latitude}; longitude: ${hotel.longitude};`
-        );
+header p {
+    margin-top: 8px;
+    opacity: 0.9;
+}
 
-        const bar = document.createElement("a-box");
-        const height = hotel.rating;
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
 
-        bar.setAttribute("position", `0 ${height / 2} 0`);
-        bar.setAttribute("width", "2");
-        bar.setAttribute("depth", "2");
-        bar.setAttribute("height", height);
-        bar.setAttribute("color", "#3498db");
+section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
 
-        const label = document.createElement("a-text");
-        label.setAttribute("value", `${hotel.name}\n⭐ ${hotel.rating}\n£${hotel.price}\n💬 ${hotel.reviews}`);
-        label.setAttribute("position", `0 ${height + 1.5} 0`);
-        label.setAttribute("align", "center");
-        label.setAttribute("color", "#FFFFFF");
-        label.setAttribute("width", "8");
-        label.setAttribute("look-at", "[gps-new-camera]");
+h2 {
+    margin-top: 0;
+}
 
-        hotelEntity.appendChild(bar);
-        hotelEntity.appendChild(label);
+.location-section {
+    text-align: center;
+}
 
-        chart.appendChild(hotelEntity);
-    });
+button {
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#locationInfo {
+    margin-top: 20px;
+}
+
+#hotelList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.hotel-card {
+    padding: 18px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid #ddd;
+}
+
+.hotel-card h3 {
+    margin-top: 0;
+}
+
+.scene-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+a-scene {
+    width: 100%;
+    height: 100%;
 }
